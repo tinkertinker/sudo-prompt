@@ -120,6 +120,7 @@ function Linux(instance, end) {
         var reason = 'needs administrative privileges. Please enter your password.';
         command.push('--comment', '"' + instance.options.name + ' ' + reason + '"');
         command.push('--');
+		command.push('-d');
       } else if (/pkexec/i.test(binary)) {
         command.push('--disable-internal-agent');
       }

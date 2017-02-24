@@ -119,12 +119,12 @@ function Linux(instance, end) {
       if (/kdesudo/i.test(binary)) {
         var reason = 'needs administrative privileges. Please enter your password.';
         command.push('--comment', '"' + instance.options.name + ' ' + reason + '"');
-        command.push('--');
 		command.push('-d');
+        command.push('-c');
       } else if (/pkexec/i.test(binary)) {
         command.push('--disable-internal-agent');
       }
-      command.push(instance.command);
+      command.push("'" + instance.command + "'");
       command = command.join(' ');
       Node.child.exec(command,
         function(error, stdout, stderr) {
